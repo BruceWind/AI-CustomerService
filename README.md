@@ -19,13 +19,15 @@ source venv/bin/activate
 pip install -r requirements.txt
 pip install --no-build-isolation faiss-cpu==1.7.2
 ```
-### Error: `Failed to build faiss-cpu` from installation:
+
+ 
 
 <summary>
-The error is related to building the faiss-cpu package, which requires SWIG. Here's a quick guide to resolve this issue:
+ If you suffer an error: `Failed to build faiss-cpu` from installation:
 </summary>
 
 <details>
+   The error is related to building the faiss-cpu package, which requires SWIG. Here's a quick guide to resolve this issue:
 1. Install SWIG:
 
    - For macOS, use Homebrew: `brew install swig`
