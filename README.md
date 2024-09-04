@@ -21,12 +21,11 @@ pip install --no-build-isolation faiss-cpu==1.7.2
 ```
 
  
+<details>
 
 <summary>
- If you suffer an error: `Failed to build faiss-cpu` from installation:
+ Click to expend: If you suffer an error: `Failed to build faiss-cpu` from this step:
 </summary>
-
-<details>
    The error is related to building the faiss-cpu package, which requires SWIG. Here's a quick guide to resolve this issue:
 1. Install SWIG:
 
@@ -54,6 +53,7 @@ pip install --no-build-isolation faiss-cpu==1.7.2
    - Install other requirements: `pip install -r requirements.txt`
 </details>
 
+
 2. Start the server:
 
     > Create a .env file:
@@ -63,6 +63,7 @@ pip install --no-build-isolation faiss-cpu==1.7.2
    OPENAI_API_KEY=your_api_key_here
    ```
 
+Following that, run this command:
    ```
    uvicorn app:app --host 0.0.0.0 --port 8000
    ```
