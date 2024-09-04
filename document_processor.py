@@ -4,6 +4,10 @@ from typing import Optional
 import PyPDF2
 from docx import Document
 from rag_engine import rag_engine
+from pdf2image import convert_from_path
+import pytesseract
+from PIL import Image
+import io
 
 async def process_document(file: UploadFile, doc_type: Optional[str]):
     # Create uploads directory if it doesn't exist
@@ -40,9 +44,21 @@ def extract_text(file_path: str, doc_type: Optional[str]) -> str:
             return file.read()
 
 def extract_text_from_pdf(file_path: str) -> str:
+    text = ""
+    # First, try to extract text directly from the PDF
     with open(file_path, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
-        return " ".join(page.extract_text() for page in reader.pages)
+        text = " ".join(page.extract_text() for page in reader.pages)
+    
+    # If no text was extracted, assume the PDF contains images
+    if not text.strip():
+        # Convert PDF to images
+        images = convert_from_path(file_path)
+        # Perform OCR on each image
+        for image in images:
+            text += pytesseract.image_to_string(image) + " "
+    
+    return text
 
 def extract_text_from_docx(file_path: str) -> str:
     doc = Document(file_path)
