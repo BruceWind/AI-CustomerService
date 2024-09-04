@@ -1,1 +1,78 @@
-# AI-CustomerService
+# RAG-Powered Chat Application
+
+This project implements a Retrieval-Augmented Generation (RAG) system with OpenAI integration, featuring document upload capabilities and a streaming chat API.
+
+## Features
+
+- Document upload and processing for RAG
+- Streaming chat API with OpenAI integration
+- FastAPI-based web server
+
+## Installation
+
+1. Clone the repository:
+
+2. Create a virtual environment and activate it:
+```
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install --no-build-isolation faiss-cpu==1.7.2
+```
+### Error: `Failed to build faiss-cpu` from installation:
+
+<summary>
+The error is related to building the faiss-cpu package, which requires SWIG. Here's a quick guide to resolve this issue:
+</summary>
+
+<details>
+1. Install SWIG:
+
+   - For macOS, use Homebrew: `brew install swig`
+   - For ubuntu: `sudo apt-get update && sudo apt-get install build-essential swig libopenblas-dev`
+   
+   
+ 2. or, SWIG does not work
+   - you can try using Anaconda/Miniconda. However, I dont want to put much tutorial here.
+   
+
+
+2. After installing SWIG, try installing the requirements again:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. If issues persist with faiss-cpu, try using a pre-built wheel:
+   - In requirements.txt, replace `faiss-cpu==1.7.2` with `faiss-cpu==1.7.2 --only-binary :all:`
+
+4. Alternatively, use faiss-cpu from conda:
+   - Install Miniconda or Anaconda
+   - Create a new conda environment: `conda create -n your_env_name python=3.8`
+   - Install faiss-cpu: `conda install -c conda-forge faiss-cpu`
+   - Install other requirements: `pip install -r requirements.txt`
+</details>
+
+2. Start the server:
+   ```
+   uvicorn app:app --host 0.0.0.0 --port 8000
+   ```
+   The server will run on `http://localhost:8000`
+
+3. API Endpoints:
+   - POST `/upload`: Upload a document for processing
+     - Parameters:
+       - `file`: The document file to upload
+       - `doc_type`: (Optional) The type of the document
+   - POST `/chat`: Send a chat message and receive a streaming response
+     - Parameters:
+       - `message`: The chat message to process
+
+
+## Acknowledgements
+
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [OpenAI](https://openai.com/)
+- [Uvicorn](https://www.uvicorn.org/)
+
+
+
