@@ -55,6 +55,14 @@ pip install --no-build-isolation faiss-cpu==1.7.2
 </details>
 
 2. Start the server:
+
+    > Create a .env file:
+   Create a file named `.env` in the root directory of the project and add the following content:
+   ```
+   OPENAI_API_BASE=https://XXXXX/v1
+   OPENAI_API_KEY=your_api_key_here
+   ```
+
    ```
    uvicorn app:app --host 0.0.0.0 --port 8000
    ```
