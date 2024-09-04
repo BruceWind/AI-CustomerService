@@ -23,7 +23,7 @@ async def process_document(file: UploadFile, doc_type: Optional[str]):
     text = extract_text(file_path, doc_type)
     
     # Add the extracted text to the RAG engine
-    rag_engine.add_documents([text])
+    await rag_engine.add_documents([text])
     
     return {
         "file_path": file_path,

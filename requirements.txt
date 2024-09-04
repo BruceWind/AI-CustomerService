@@ -16,3 +16,4 @@ transformers==4.30.2
 pdf2image==1.16.0
 pytesseract==0.3.8
 Pillow>=8.3.1,!=8.3.*
+tiktoken==0.3.3
