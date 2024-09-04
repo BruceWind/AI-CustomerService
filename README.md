@@ -27,12 +27,11 @@ pip install --no-build-isolation faiss-cpu==1.7.2
  Click to expend: If you suffer an error: `Failed to build faiss-cpu` from this step:
 </summary>
    The error is related to building the faiss-cpu package, which requires SWIG. Here's a quick guide to resolve this issue:
-1. Install SWIG:
+1. Install SWIG & tesseract:
 
-   - For macOS, use Homebrew: `brew install swig`
-   - For ubuntu: `sudo apt-get update && sudo apt-get install build-essential swig libopenblas-dev`
-   
-   
+   - For macOS, use Homebrew: `brew install swig tesseract`
+   - For ubuntu: `sudo apt-get update && sudo apt-get install  tesseract-ocr build-essential swig libopenblas-dev`
+
  2. or, SWIG does not work
    - you can try using Anaconda/Miniconda. However, I dont want to put much tutorial here.
    
@@ -64,12 +63,14 @@ pip install --no-build-isolation faiss-cpu==1.7.2
    ```
 
 Following that, run this command:
-   ```
-   uvicorn app:app --host 0.0.0.0 --port 8000
-   ```
-   The server will run on `http://localhost:8000`
 
-3. API Endpoints:
+```
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
+
+The server will run on `http://localhost:8000`
+
+## API Endpoints:
    - POST `/upload`: Upload a document for processing
      - Parameters:
        - `file`: The document file to upload
@@ -84,6 +85,4 @@ Following that, run this command:
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [OpenAI](https://openai.com/)
 - [Uvicorn](https://www.uvicorn.org/)
-
-
-
+- [RAG (Retrieval-Augmented Generation)](https://arxiv.org/abs/2005.11401)
