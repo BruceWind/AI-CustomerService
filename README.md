@@ -20,14 +20,6 @@ pip install -r requirements.txt
 pip install --no-build-isolation faiss-cpu==1.7.2
 ```
 
-3. Install NLTK data:
-   After installing the requirements, run the following Python commands to download the necessary NLTK data:
-   ```python
-   import nltk
-   nltk.download('wordnet')
-   nltk.download('omw-1.4')
-   ```
-
 <details>
 
 <summary>
