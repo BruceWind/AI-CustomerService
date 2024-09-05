@@ -18,7 +18,7 @@ async def upload_file(
 ):
     try:
         lib_id = str(uuid.uuid4())
-        result = await process_document(file, doc_type, lib_id)
+        result = await process_document(file, doc_type)
         rag_instances[lib_id] = result['rag_engine']
         return {"message": "Document processed successfully", "lib_id": lib_id}
     except Exception as e:
