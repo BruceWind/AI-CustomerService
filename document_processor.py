@@ -3,7 +3,7 @@ import os
 from typing import Optional
 import PyPDF2
 from docx import Document
-from rag_engine import rag_engine
+from rag_engine import RAGEngine
 from pdf2image import convert_from_path
 import pytesseract
 from PIL import Image
@@ -22,15 +22,14 @@ async def process_document(file: UploadFile, doc_type: Optional[str]):
     # Extract text based on file type
     text = extract_text(file_path, doc_type)
     
-    # Add the extracted text to the RAG engine
+    # Create a new RAG instance for this upload
+    rag_engine = RAGEngine()
     await rag_engine.add_documents([text])
     
     return {
-        "file_path": file_path,
+        "rag_engine": rag_engine,
         "doc_type": doc_type,
-        "file_size": len(content),
-        "file_name": file.filename,
-        "text_length": len(text)
+        "file_name": file.filename
     }
 
 def extract_text(file_path: str, doc_type: Optional[str]) -> str:

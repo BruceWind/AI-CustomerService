@@ -3,7 +3,7 @@ from openai import AsyncOpenAI
 import os
 import nltk
 from nltk.corpus import wordnet
-from rag_engine import rag_engine
+from rag_engine import RAGEngine  # Import the class, not an instance
 from dotenv import load_dotenv
 import tiktoken
 
@@ -35,7 +35,8 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
     num_tokens = len(encoding.encode(string))
     return num_tokens
 
-async def handle_chat_message(message: str):
+async def handle_chat_message(message: str, rag_engine: RAGEngine):
+    # Use the provided rag_engine instance
     expanded_message = expand_query(message)
     relevant_docs = await rag_engine.query(expanded_message)
     

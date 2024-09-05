@@ -74,9 +74,6 @@ class RAGEngine:
                 })
         return results
 
-# Create a global instance of the RAG engine
-rag_engine = RAGEngine()
-
 # Example usage:
 if __name__ == "__main__":
     import asyncio
