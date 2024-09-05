@@ -80,10 +80,25 @@ The server will run on `http://localhost:8000`
      - Parameters:
        - `file`: The document file to upload
        - `doc_type`: (Optional) The type of the document
+     - Returns:
+       - `lib_id`: A unique identifier for the uploaded document's RAG instance
    - POST `/chat`: Send a chat message and receive a streaming response
      - Parameters:
        - `message`: The chat message to process
+       - `lib_id`: The unique identifier of the RAG instance to use for this chat
 
+## Usage Example:
+1. Upload a document:
+   ```
+   curl -X POST -F "file=@your_document.pdf" -F "doc_type=pdf" http://localhost:8000/upload
+   ```
+   This will return a `lib_id` in the response.
+
+2. Chat using the uploaded document:
+   ```
+   curl -X POST -F "message=Your question here" -F "lib_id=the_lib_id_from_upload" http://localhost:8000/chat
+   ```
+   Replace `the_lib_id_from_upload` with the actual `lib_id` received from the upload response.
 
 ## Acknowledgements
 
