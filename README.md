@@ -10,9 +10,13 @@ This project implements a Retrieval-Augmented Generation (RAG) system with OpenA
 
 ## Installation
 
-1. Clone the repository:
+1.  Install **tesseract-ocr ** and Clone the repository.
 
-2. Create a virtual environment and activate it:
+- For macOS, use Homebrew: `brew install tesseract`
+- For ubuntu: `sudo apt-get update && sudo apt-get install tesseract-ocr`
+
+
+3. Create a virtual environment and activate it:
 ```
 python -m venv venv
 source venv/bin/activate
@@ -26,10 +30,10 @@ pip install --no-build-isolation faiss-cpu==1.7.2
  Click to expend: If you suffer an error: `Failed to build faiss-cpu` from this step:
 </summary>
    The error is related to building the faiss-cpu package, which requires SWIG. Here's a quick guide to resolve this issue:
-1. Install SWIG & tesseract:
+1. Install SWIG:
 
-   - For macOS, use Homebrew: `brew install swig tesseract`
-   - For ubuntu: `sudo apt-get update && sudo apt-get install  tesseract-ocr build-essential swig libopenblas-dev`
+   - For macOS, use Homebrew: `brew install swig`
+   - For ubuntu: `sudo apt-get update && sudo apt-get install build-essential swig libopenblas-dev`
 
  2. or, SWIG does not work
    - you can try using Anaconda/Miniconda. However, I dont want to put much tutorial here.
