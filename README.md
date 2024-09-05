@@ -10,7 +10,7 @@ This project implements a Retrieval-Augmented Generation (RAG) system with OpenA
 
 ## Installation
 
-1.  Install **tesseract-ocr ** and Clone the repository.
+1.  Install **tesseract-ocr** and Clone the repository.
 
 - For macOS, use Homebrew: `brew install tesseract`
 - For ubuntu: `sudo apt-get update && sudo apt-get install tesseract-ocr`
