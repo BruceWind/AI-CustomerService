@@ -16,7 +16,7 @@ This project implements a Retrieval-Augmented Generation (RAG) system with OpenA
 - For ubuntu: `sudo apt-get update && sudo apt-get install tesseract-ocr`
 
 
-3. Create a virtual environment and activate it:
+2. Create a virtual environment and activate it:
 ```
 python -m venv venv
 source venv/bin/activate
@@ -56,7 +56,7 @@ pip install --no-build-isolation faiss-cpu==1.7.2
 </details>
 
 
-2. Start the server:
+3. Start the server:
 
     > Create a .env file:
    Create a file named `.env` in the root directory of the project and add the following content:
@@ -68,6 +68,8 @@ pip install --no-build-isolation faiss-cpu==1.7.2
 Following that, run this command:
 
 ```
+python -m venv venv
+source venv/bin/activate
 uvicorn app:app --host 0.0.0.0 --port 8000
 ```
 
